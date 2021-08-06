@@ -1,0 +1,85 @@
+@media only screen and (max-width: 1200px) {
+    .col-lg-4 {
+        display: none;
+    }
+}
+body{
+	background-color:whitesmoke;
+}
+.navbar {
+	margin-bottom: 0px;
+	background-color: black;
+}
+.navbar .nav>li>a{
+	color: white;
+}
+
+.navbar .navbar-brand{
+	color: white;
+}
+.jumbotron{
+	color: white;
+	background-color: black;
+}
+.dropdown-menu{
+	background-color: white;
+}
+.pathfinder{
+	padding-left: 100px;
+}
+td:hover{
+	background-color: gold;
+}
+.path{
+	background-color: blueviolet;
+}
+.wall{
+	background-color: black;
+}
+.visited{
+	background-color: red;
+}
+table{
+	margin:0 auto 0 auto;
+}
+.vl {
+	border-left: 2px solid black;
+	height: 100%;
+	position: absolute;
+	left: 100%;
+	top: 0;
+}
+.row{
+	width: 100%;
+}
+#tablediv{
+	height:auto;
+}
+.right{
+	height: 100%;
+}
+.slidecontainer{
+	width: 100%;
+	margin: auto;
+}
+#controls{
+		border:1px solid black;
+		border-radius: 10px;
+		bottom: 0;
+		display: grid;
+		grid-template-columns: .3fr 1fr 1fr 1fr;
+		grid-gap: 21px;
+		padding: 12px;
+		height: 10%;
+		align-content: center;
+		/* align-items: center; */
+		position: fixed;
+		/* bottom: 0; */
+		width: fit-content;
+		/* justify-content: inherit;*/
+}
+table {
+    /* padding: 96px; */
+    margin: 50px auto auto auto;
+}
+/* BY UTKARSH JAISWAL, VAIBHAV GUPTA, ANURAG NIGAM*/

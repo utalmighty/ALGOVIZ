@@ -1,0 +1,143 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ALGO-VIZ Sorting</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="static/css/sorting.css">
+
+</head>
+<body>
+
+    <header>
+        <nav class="navbar navbar-inverse,navbar-fixed-top">
+
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-ta
+					rget="#bs-example-navbar-collapse-1" aria-expanded="false">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a href="#" class="navbar-brand" style="position: absolute;left: 0;">ALGO-VIZ</a>
+			</div>
+
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+				<ul class="nav navbar-nav">
+
+					<li><a href="#" class="SORT" style="margin-left: 30;">SORTING</a></li>
+				</ul>
+
+				<ul class="nav navbar-nav navbar-right">
+
+					<li class="dropdown">
+
+						<a class="dropdown-toggle" data-toggle="dropdown" href="#">
+
+							
+						</li>
+					</ul>
+			</div>
+		</nav>
+    </header>
+
+    <section>
+        <div id="array_container" style="width: 700;">
+            
+        </div>
+        <div class="col-lg-4" style="background-color: rgb(39, 39, 39); left: 927;height: 615;width: 439;overflow: auto;">
+            <div class = "right">
+                <h1 style="color: rgb(255, 153, 0); position: static;">Python Code</h1>
+                     <code>CODEdsjgbadsjgbadsikjgepwognwvnwdvbewigbepgvbewogdg</code><br>
+                     <code>gewgewgjbewgonwgEW</code><br>
+                     <code>gewgnerghjerw</code><br>
+                     <code>gh?wgegewghqfgmewgiadgldsgngkbdsgpndojgsdgng</code><br>
+                     <code>vl {</code><br>
+                     <code>border-left: 2px solid black;</code><br>
+                     <code>height: 100%;</code><br>
+                     <code>position: absolute;</code><br>
+                     <code>left: 100%;</code><br>
+                     <code>top: 0;</code><br>
+                     <code>}</code><br>
+                     <code>.row{</code><br>
+                     <code>top: 0;</code><br>
+                     <code>height: 100%;</code><br>
+                     <code>}</code><br>
+                     <code>#tablediv{</code><br>
+                     <code></code><br>
+                     <code>height:auto;</code><br>
+                     <code>}</code><br>
+                     <code>.right{</code><br>
+                     <code>height: 100%;</code><br>
+                     <code>}</code><br>
+                     <code>.slidecontainer{</code><br>
+                     <code>width: 100%;</code><br>
+                     <code>margin: auto;</code><br>
+                     <code>}</code><br>
+                     <code>#controls{</code><br>
+                     <code>border:1px solid black;</code><br>
+                     <code>border-radius: 10px;</code><br>
+                     <code>bottom: 0;</code><br>
+                     <code>display: grid;</code><br>
+                     <code>grid-template-columns: .3fr 1fr 1</code><br>
+                     <code>height:auto;</code><br>
+                     <code>}</code><br>
+                     <code>.right{</code><br>
+                     <code>height: 100%;</code><br>
+                     <code>}</code><br>
+                     <code>.slidecontainer{</code><br>
+                     <code>width: 100%;</code><br>
+                     <code>margin: auto;</code><br>
+                     <code>}</code><br>
+                     <code>#controls{</code><br>
+                     <code>border:1px solid black;</code><br>
+                     <code>border-radius: 10px;</code><br>
+                     <code>bottom: 0;</code><br>
+                     <code>display: grid;</code><br>
+                     <code>grid-template-columns: .3fr 1fr 1</code><br>
+            </div>
+        </div>
+    </div>
+
+    </section>
+
+    <footer>
+        <select name="algorithms" id="algoselect" style="position: absolute;
+        top: 550;">
+            <option value=1>Bubble Sort</option>
+            <option value=2>insertion Sort</option>
+            <option value=3>Merge Sort</option>
+            <option value=4>Quick Sort</option>
+            <option value=5>Heap Sort</option>
+            <option value=6>Selection Sort</option>
+        </select>
+<div id = "controls" style="width: 653;">
+    <button class="btn btn-success" id="playbutton" onclick="runalgo()" style="height: 40;width: 90;">PLAY</button>
+    <div class="array-inputs">
+        <button id="a_generate" style="height: 40;">Generate New Array!</button>
+        <div class="slidecontainer" style="position: absolute;left: 305;width: 150;top: 3;">
+            <p>Size of the array:</p>
+            <input id="a_size" type="range" min=20 max=150 step=1 value=80>
+        </div>
+        <div class="slidecontainer" style="position: absolute;left: 485;width: 150;top: 3;">
+            <p>Speed of the algorithm:</p>
+            <input id="a_speed" type="range" min=1 max=5 step=1 value=4>
+        </div>
+    </div>
+</div>
+    </footer>
+
+        <script src="static/js/sorting/main.js"></script>   <!--This should be at the end of body and should be loaded before sorts.js-->
+		<script src="static/js/sorting/visualization.js"></script>  <!--This should be loaded after main.js-->
+
+		<script src="static/js/sorting/bubble.js"></script>
+		<script src="static/js/sorting/selection.js"></script>
+		<script src="static/js/sorting/insertion.js"></script>
+		<script src="static/js/sorting/merge.js"></script>
+		<script src="static/js/sorting/quick.js"></script>
+		<script src="static/js/sorting/heap.js"></script>
+</body>
+
+</html>

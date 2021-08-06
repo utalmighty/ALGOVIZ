@@ -1,0 +1,284 @@
+<html>
+	<head>
+		<title>ALGO-VIZ Path Finding</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="static/css/pathfinding.css">
+	</head>
+
+	<body>
+		<nav class="navbar navbar-inverse,navbar-fixed-top">
+
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-ta
+					rget="#bs-example-navbar-collapse-1" aria-expanded="false">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a href="#" class="navbar-brand">ALGO-VIZ</a>
+			</div>
+
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+				<ul class="nav navbar-nav">
+
+					<li><a href="#" class="PATHFINDER">PATH FINDER</a></li>
+				</ul>
+
+				<ul class="nav navbar-nav navbar-right">
+
+					<li class="dropdown">
+
+						<a class="dropdown-toggle" data-toggle="dropdown" href="#">
+
+							<span class="caret"></span>Algorithm</a>
+
+							<ul class="dropdown-menu">
+
+								<li><a href="#">Page 1-1</a></li>
+								<li><a href="#">Page 1-2</a></li>
+								<li><a href="#">Page 1-3</a></li>
+							</ul>
+						</li>
+						<li><a href="#">Clear</a></li>
+					</ul>
+			</div>
+		</nav>
+		
+		<div class="row">
+			<div class="col-lg-8">
+				<div class = "left">
+					<div id="tablediv">
+
+					</div>
+			
+						<select name="algorithms" id="algoselect">
+							<option value=0>Dijkstra</option>
+							<option value=1>DFS</option>
+							<option value=2>BFS</option>
+							<option value=3>A* (Star)</option>
+						</select>
+
+					<div id = "controls">
+                              <button class="btn btn-success" onclick="play()" style="margin: 13px; padding: 9px; width: 115px;">PLAY</button>
+						<div class="slidecontainer">
+							<input type="range" min=0 max=4 value=0 class="slider" id="myRange">
+							<p>Density: <span id="density">50</span></p>
+						</div>
+						<div class="slidecontainer">
+							<input type="range" min=0 max=2 value=2 class="slider" id="speedrange" on>
+							<p>Speed: <span id="speedspan">Medium</span></p>
+                        </div>
+                        <div class="info">
+							<img src="static/images/info.png" alt="info" height="25px" width="25px" style="margin: 18px;">
+						</div>
+					</div>
+
+					</div>
+			</div>
+			
+			<div class="col-lg-4" style="background-color: rgb(39, 39, 39); left: 15px; height: 91.8%; overflow: auto;">
+				<div class = "right">
+					<h1 style="color: rgb(255, 153, 0); position: static;">Python Code</h1>
+				<code>class Node :</code><br>				
+				<code>	def __init__(self, name) :</code><br>
+				<code>		self.name = name</code><br>
+				<code>		self.up = None</code><br>
+				<code>		self.down = None</code><br>
+				<code>		self.left = None</code><br>
+				<code>		self.right = None</code><br>
+				<code>		self.up_weight = None</code><br>
+				<code>		self.down_weight = None</code><br>
+				<code>		self.left_weight = None</code><br>
+				<code>		self.right_weight = None</code><br>
+				<code>	def view(self, node) :</code><br>
+				<code>		ret = {'Current' : node.name}</code><br>
+				<code>		if node.up :</code><br>
+				<code>			ret['up'] = node.up.name</code><br>
+				<code>			ret['up_weight'] = node.up_weight</code><br>
+				<code>		if node.down :</code><br>
+				<code>			ret['down'] = node.down.name</code><br>
+				<code>			ret['down_weight'] = node.down_weight</code><br>
+				<code>		if node.left :</code><br>
+				<code>			ret['left'] = node.left.name</code><br>
+				<code>			ret['left_weight'] = node.left_weight</code><br>
+				<code>		if node.right :</code><br>
+				<code>			ret['right'] = node.right.name</code><br>
+				<code>			ret['right_weight'] = node.right_weight</code><br>	
+				<code>		return ret</code><br>	
+				<code>class Graph :</code><br>
+				<code>	def __init__(self) :</code><br>
+				<code>		self.start = None</code><br>
+				<code>		self.end = None</code><br>
+				<code>	def markstart(self, n) :</code><br>
+				<code>		nd = Node(n)</code><br>
+				<code>		self.start = nd</code><br>
+				<code>		return nd</code><br>
+				<code>	def markend(self, n) :</code><br>
+				<code>		nd = Node(n)</code><br>
+				<code>		self.end = nd</code><br>
+				<code>		return nd</code><br>	
+				<code>	def insert(self, new, weight=1) :</code><br>
+				<code>		n = Node(new)</code><br>
+				<code>		return n</code><br>
+				<code>	def oldinsert(self, oldnode, direction, new, weight)  :</code><br>
+				<code>		n = Node(new)</code><br>
+				<code>		if direction == 'U' : </code><br>
+				<code>			oldnode.up = n</code><br>
+				<code>			n.down =  oldnode</code><br>
+				<code>			oldnode.up_weight = n.down_weight = weight</code><br>
+				<code>			return n</code><br>
+				<code>		if direction == 'D' : </code><br>
+				<code>			oldnode.down = n</code><br>
+				<code>			n.up =  oldnode</code><br>
+				<code>			oldnode.down_weight = n.up_weight = weight</code><br>
+				<code>			return n</code><br>
+				<code>		if direction == 'L' : </code><br>
+				<code>			oldnode.left = n</code><br>
+				<code>			n.right =  oldnode</code><br>
+				<code>			oldnode.left_weight = n.right_weight = weight</code><br>
+				<code>			return n</code><br>
+				<code>		if direction == 'R' : </code><br>
+				<code>			oldnode.right = n</code><br>
+				<code>			n.left =  oldnode</code><br>
+				<code>			oldnode.right_weight = n.left_weight = weight</code><br>
+				<code>			return n</code><br>	
+				<code>	def reached(self, n) :</code><br>
+				<code>		if self.end == n :</code><br>
+				<code>			return True</code><br>
+				<code>		return False</code><br>
+				<code>class Queue :</code><br>
+				<code>	def __init__(self) :</code><br>
+				<code>		self.queue = list()</code><br>
+				<code>	def insert(self, value) :</code><br>
+				<code>		self.queue.append(value) </code><br>
+				<code>	def pop(self) :</code><br>
+				<code>		if self.queue :</code><br>
+				<code>			return self.queue.pop(0)</code><br>
+				<code>		return </code><br>
+				<code>	def isEmpty(self) :</code><br>
+				<code>		if self.queue :</code><br>
+				<code>			return False</code><br>
+				<code>		return True</code><br>
+				<code>def createnodes(matrix, n) :</code><br>
+				<code>	print("Cresting Maze, Please Wait.", end = '\r')</code><br>
+				<code>	dicta = dict()</code><br>
+				<code>	graph = Graph() </code><br>
+				<code>	for i in range(1, (n*n)+1) :</code><br>
+				<code>		if i == 1 : </code><br>
+				<code>			dicta[i] = graph.markstart(i)</code><br>
+				<code>		elif i == n*n :</code><br>
+				<code>			dicta[i] = graph.markend(i)</code><br>
+				<code>		elif matrix[xycord(i, n)[0]][xycord(i, n)[1]] == 1 :</code><br>
+				<code>			dicta[i] = graph.insert(i)</code><br>
+				<code>			directions = 'UDRL' </code><br>
+				<code>			for x in directions :</code><br>
+				<code>				temp = enumerators(i, x, n)</code><br>
+				<code>				if temp :</code><br>
+				<code>					if dicta.get(temp) :</code><br>
+				<code>						relate(x, dicta[i], dicta[temp])</code><br>
+				<code>	return dicta, graph</code><br>
+				<code>def enumerators(curr, dirt, n) : </code><br>
+				<code>	if dirt == 'U' :</code><br>
+				<code>		if curr-n >= 1:</code><br>
+				<code>			return curr-n</code><br>
+				<code>		else:</code><br>
+				<code>			return</code><br>
+				<code>	if dirt == 'D' :</code><br>
+				<code>		if curr+n <= n*n:</code><br>
+				<code>			return curr+n</code><br>
+				<code>		else:</code><br>
+				<code>			return</code><br>
+				<code>	if dirt == 'R' :</code><br>
+				<code>		if (curr)%n != 0 :</code><br>
+				<code>			return curr+1</code><br>
+				<code>		else:</code><br>
+				<code>			return</code><br>
+				<code>	if dirt == 'L' :</code><br>
+				<code>		if curr%n != 1:</code><br>
+				<code>			return curr-1</code><br>
+				<code>		else:</code><br>
+				<code>			return</code><br>
+				<code>def relate(x, n, dicta, weight = 1) : </code><br>
+				<code>	if x == 'U' :</code><br>
+				<code>		n.up = dicta</code><br>
+				<code>		dicta.down = n</code><br>
+				<code>		n.up_weight = weight</code><br>
+				<code>		dicta.down_weight = weight</code><br>
+				<code>	elif x == 'L' :</code><br>
+				<code>		n.left = dicta</code><br>
+				<code>		dicta.right = n</code><br>
+				<code>		n.left_weight = weight</code><br>
+				<code>		dicta.right_weight = weight</code><br>
+				<code>	elif x == 'R' :</code><br>
+				<code>		n.right = dicta</code><br>
+				<code>		dicta.left = n</code><br>
+				<code>		n.right_weight = weight</code><br>
+				<code>		dicta.left_weight = weight</code><br>
+				<code>	elif x == 'D' :</code><br>
+				<code>		n.down = dicta</code><br>
+				<code>		dicta.up = n</code><br>
+				<code>		n.down_weight = weight</code><br>
+				<code>		dicta.up_weight = weight</code><br>
+				<code>def xycord(i, n) : </code><br>
+				<code>	i = i-1</code><br>
+				<code>	x = i//n</code><br>
+				<code>	y = i%n</code><br>
+				<code>	return x, y</code><br>
+				<code>def BFS(graph, visitdict, dicta, n) :</code><br>
+				<code>	queue = Queue()</code><br>
+				<code>	queue.insert(graph.start)</code><br>
+				<code>	directions = 'LDRU'</code><br>
+				<code>	poped = graph.start </code><br>
+				<code>	while not queue.isEmpty() and not graph.reached(poped):</code><br>
+				<code>		poped = queue.pop()</code><br>
+				<code>		if visitdict[poped.name]  == False :</code><br>
+				<code>			visitdict[poped.name] = True</code><br>
+				<code>			print(poped.name)</code><br>
+				<code>			for i in directions :</code><br>
+				<code>				temp = enumerators(poped.name, i, n)</code><br>
+				<code>				if visitdict.get(temp) != None visitdict[temp] == False :</code><br>
+				<code>					queue.insert(dicta[temp])</code><br>
+				<code>import time</code><br>
+				<code>infinity = 2**32</code><br>
+				<code>if __name__ == "__main__" :</code><br>
+				<code>	matrix, n = [[1,1,1,1,1], [1,1,1,1,1], [1,1,1,1,1], [1,1,1,1,1], [1,1,1,1,1]], 5</code><br>
+				<code>	dictofnodes, graph = createnodes(matrix, n)</code><br>
+				<code>	visitdict = dict()</code><br>
+				<code>	costdict = dict()</code><br>
+				<code>	for i in dictofnodes.keys() :</code><br>
+				<code>		visitdict.setdefault(i, False)</code><br>
+				<code>		costdict.setdefault(i, infinity)</code><br>
+				<code>	print(dictofnodes.keys())</code><br>
+				<code>	t = time.perf_counter()</code><br>
+				<code>	BFS(graph, visitdict,dictofnodes, n)</code><br>
+				</div>
+			</div>
+		</div>
+
+		<script src="static/js/path finding/walltoggle.js"></script>
+		<script src="static/js/path finding/createnodes.js"></script>
+		<script src="static/js/path finding/classes.js"></script>
+		<script src="static/js/path finding/adjacents.js"></script>
+		<script src="static/js/path finding/xycord.js"></script>
+		<script src="static/js/path finding/relate.js"></script>
+		<script src="static/js/path finding/maketable.js"></script>
+		<script src="static/js/path finding/intparser.js"></script>
+		<script src="static/js/path finding/matrixmaker.js"></script>
+		<script src="static/js/path finding/animate.js"></script>
+		<script src="static/js/path finding/play.js"></script>
+		<script src="static/js/path finding/euclidean.js"></script>
+		<script src="static/js/path finding/clearpath.js"></script>
+
+		<script src="static/js/path finding/Heap.js"></script>
+		<script src="static/js/path finding/Dijkstra.js"></script>
+		<script src="static/js/path finding/astar.js"></script>
+		<script src="static/js/path finding/DFS.js"></script>
+		<script src="static/js/path finding/Queue.js"></script>
+		<script src="static/js/path finding/BFS.js"></script>
+
+		<script src="static/js/path finding/main.js"></script>
+     </body>
+</html>
+<!-- BY UTKARSH JAISWAL and Vaibhav Gupta and Anurag Nigam. -->
