@@ -29,4 +29,23 @@ function traceoutpath(tracelist) {
      }
  }
 
+ function clearPath() {
+     // without while loop this functionaly isnt working
+     while (document.getElementsByClassName("visited").length > 0) {
+          const elements = document.getElementsByClassName("visited");
+          for (let i=0; i<elements.length; i+=1) {
+               elements[i].classList.remove("visited");
+          }
+     }
+
+     // without while loop this functionaly isnt working
+     while (document.getElementsByClassName("path").length > 0) {
+          const elements = document.getElementsByClassName("path");
+          for (let i=0; i<elements.length; i+=1) {
+               elements[i].classList.remove("path");
+          }
+     }
+     
+ }
+
 // BY UTKARSH JAISWAL
